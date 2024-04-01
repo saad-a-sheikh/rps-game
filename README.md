@@ -1,2 +1,2 @@
 # rps-game
-A Rock Paper Scissor game made with Javascript.
+A Rock Paper Scissors game made with Javascript.
