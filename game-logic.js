@@ -8,90 +8,39 @@ Items are ordered according to precedence:
 - Paper beats Rock
 */
 
-// variables to keep track of score
-let playerScore = 0;
-let compScore = 0;
+// getting player's choice
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.addEventListener('click', rps);
+    });
+});
 
-// function to capitalize first letter of every word
-function capitalize(word) {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-}
+// where the result will be displayed
+const resultParagraph = document.getElementById('result');
 
-// function to generate computer's random choice
-function getCompChoice() {
-    return choices[Math.floor(Math.random() * 3)]; // formula: (max - min + 1) + min  =  (2 - 0 + 1) + 0
-}
-
-// function to get player's choice
-function getPlayerChoice() {
-    let input;
-
-    // runs infinitely till the player chooses one of the three options
-    while (true) {
-        input = capitalize(prompt("Rock, Paper or Scissors?"));
-
-        // checks whether the input is in the array or not
-        if (choices.includes(input)) {
-            break;
-        }
-    }
-    return input;
-}
-
-export function rps() {
+function rps(event) {
     // variables to store selected option
-    let playerSelection = getPlayerChoice();
-    let compSelection = getCompChoice();
+    let playerSelection = event.target.getAttribute('data-choice');
+    let compSelection = choices[Math.floor(Math.random() * 3)]; // formula: (max - min + 1) + min  =  (2 - 0 + 1) + 0
 
-    // variables for knowing the index at which the chosen choices lie in the array
-    let playerSelectionIndex, compSelectionIndex;
+    let result = getWinner(playerSelection, compSelection);
 
-    // checking for a draw
-    if (playerSelection == compSelection) {
-        return `It's a draw! You both chose ${compSelection}.`;
-    }
-
-    else {
-
-        // loop to check every option and then initialize the compSelectionIndex playerSelectionIndex variables to respective index at which the choice lies
-        for (let i = 0; i < 3; i++) {
-            if (playerSelection == choices[i]) {
-                playerSelectionIndex = i;
-            }
-
-            if (compSelection == choices[i]) {
-                compSelectionIndex = i;
-            }
-        }
-
-        // to check for the exception when computer chooses "Paper" and player chooses "Rock"
-        if (compSelectionIndex == 2 && playerSelectionIndex == 0) {
-            compScore++;
-            return `You Lose! ${compSelection} beats ${playerSelection}.`;
-        }
-
-        // if there is no exception, the following code runs
-        else {
-            if (playerSelectionIndex < compSelectionIndex) {
-                playerScore++;
-                return `You Win! ${playerSelection} beats ${compSelection}.`;
-            }
-
-            else {
-                compScore++;
-                return `You Lose! ${compSelection} beats ${playerSelection}.`;
-            }
-        }
-    }
+    resultParagraph.innerText = `You chose ${playerSelection}. The computer chose ${compSelection}. ${result}`;
+    
 }
 
-// printing the winner of the game
-export function getWinner() {
-    if (compScore > playerScore) {
-        return `Computer wins the game with ${compScore} points.`;
+// getting the winner of the game
+export function getWinner(playerSelection, compSelection) {
+    if (playerSelection === compSelection) {
+        return "It's a tie!";
     }
-
-    else {
-        return `You win the game with ${playerScore} points.`;
+    if (
+        (playerSelection === 'Rock' && compSelection === 'Scissors') ||
+        (playerSelection === 'Paper' && compSelection === 'Rock') ||
+        (playerSelection === 'Scissors' && compSelection === 'Paper')
+    ) {
+        return "You win!";
     }
+    return "You lose!";
 }
