@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <h1>ROCK, PAPER & SCISSORS</h1>
-    <div id="compScoreWrapper">
-        <div>Computer's score</div>
-        <div id="compScore"></div>
-    </div>
-    <div id="playerScoreWrapper">
-        <div>Player's score</div>
-        <div id="playerScore"></div>
-    </div>
-    <button id="rock" data-choice="Rock">Rock</button>
-    <button id="paper" data-choice="Paper">Paper</button>
-    <button id="scissors" data-choice="Scissors">Scissors</button>
-    <div id="result"></div>
+    <header>
+        <h1>ROCK, PAPER & SCISSORS</h1>
+    </header>
+    <main>
+        <div id="scoreWrapper">
+            <div id="compScoreWrapper">
+                <div>Computer's score</div>
+                <div id="compScore">0</div>
+            </div>
+            <div id="playerScoreWrapper">
+                <div>Player's score</div>
+                <div id="playerScore">0</div>
+            </div>
+        </div>
+        <div id="gameplay">
+            <button id="rock" data-choice="Rock"><img src="images/rock.png" alt="Rock"></button>
+            <button id="paper" data-choice="Paper"><img src="images/paper.png" alt="Paper"></button>
+            <button id="scissors" data-choice="Scissors"><img src="images/scissors.png" alt="Scissors"></button>
+            <div id="result"> </div>
+        </div>
+    </main>
+    <footer></footer>
 </body>
 <script type="module" src="game-logic.js"></script>
 </html>

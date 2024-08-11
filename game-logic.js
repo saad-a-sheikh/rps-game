@@ -38,7 +38,7 @@ const winningScore = 5;
 
 function rps(event) {
     // variables to store selected option
-    let playerSelection = event.target.getAttribute('data-choice');
+    let playerSelection = event.currentTarget.getAttribute('data-choice');
     let compSelection = choices[Math.floor(Math.random() * 3)]; // formula: (max - min + 1) + min  =  (2 - 0 + 1) + 0
 
     let result = getResult(playerSelection, compSelection);
