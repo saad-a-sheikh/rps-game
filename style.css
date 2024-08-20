@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'smb'; /* Name you want to use in your CSS */
+    src: url('./fonts/Super\ Mario\ Bros.\ 2.ttf') format('truetype');
+    font-weight: normal; /* Adjust based on the font weight */
+    font-style: normal;  /* Adjust based on the font style */
+  }
+
 body{
     display: flex;
     flex-direction: column;
@@ -5,15 +12,29 @@ body{
     align-items: center;
     justify-content: space-between;
     text-align: center;
+    font-family: "smb";
 }
 
 header, footer {
     flex: 0.5 1 auto;
 }
 
+#pink {
+    color: rgb(200, 69, 107);
+}
+
+#yellow {
+    color: rgb(217, 189, 71);
+}
+
+#blue {
+    color: rgb(107, 174, 183);
+}
+
 #scoreWrapper{
     display: flex;
     justify-content: space-around;
+    gap: 3vh;
 }
 
 main {
@@ -25,19 +46,26 @@ main {
 }
 
 #gameplay {
-    align-items: center;
-}
-
-button {
-    justify-self: center;
-}
-
-#result {
-    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 button{
     border-radius: 100%;
     background-color: transparent;
     border-color: transparent;
+
+}
+
+button {
+    width: 20vw; /* Relative to viewport width */
+    max-width: 130px; /* Maximum width to prevent it from getting too large */
+    min-width: 100px; /* Optional: Minimum width to ensure it’s not too small */
+    height: auto; /* Maintain aspect ratio */
+}
+  
+button img {
+    width: 100%; /* Image fills the button */
+    height: auto; /* Maintain aspect ratio */
 }

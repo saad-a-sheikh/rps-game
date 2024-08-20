@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=">
     <link rel="stylesheet" href="./style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
     <header>
-        <h1>ROCK, PAPER & SCISSORS</h1>
+        <h1><span id="pink">ROCK</span> <span id="yellow">PAPER</span> <span id="blue">SCISSORS</span></h1>
     </header>
     <main>
         <div id="scoreWrapper">
@@ -22,10 +23,12 @@
             </div>
         </div>
         <div id="gameplay">
-            <button id="rock" data-choice="Rock"><img src="images/rock.png" alt="Rock"></button>
-            <button id="paper" data-choice="Paper"><img src="images/paper.png" alt="Paper"></button>
-            <button id="scissors" data-choice="Scissors"><img src="images/scissors.png" alt="Scissors"></button>
-            <div id="result"> </div>
+            <div id="options">
+                <button id="rock" data-choice="Rock"><img src="images/rock.png" alt="Rock"></button>
+                <button id="paper" data-choice="Paper"><img src="images/paper.png" alt="Paper"></button>
+                <button id="scissors" data-choice="Scissors"><img src="images/scissors.png" alt="Scissors"></button>
+            </div>
+            <div id="result">Hey! let's play!</div>
         </div>
     </main>
     <footer></footer>
